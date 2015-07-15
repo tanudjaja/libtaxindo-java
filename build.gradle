@@ -1,0 +1,38 @@
+
+apply plugin: 'java'
+
+archivesBaseName = 'libtaxindo-java'
+version = '0.0.1'
+group = 'id.tanudjaja'
+
+repositories
+{
+	mavenCentral()
+	flatDir { dirs 'libs' }
+}
+
+dependencies
+{
+	testCompile 'junit:junit:4.12'
+}
+
+task (distclean, dependsOn: clean) <<
+{
+	delete ".gradle"
+}
+
+configure(distclean)
+{
+	group = 'Build'
+	description = 'Clean the build result and the .gradle directory'
+}
+
+test
+{
+	testLogging
+	{
+//		events 'started', 'passed', 'failed', 'skipped'
+		events 'passed', 'failed', 'skipped'
+	}
+}
+
