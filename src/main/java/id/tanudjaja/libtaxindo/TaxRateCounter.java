@@ -43,12 +43,12 @@ public class TaxRateCounter
 		{
 			if(aTaxableIncome <= markers[i])
 			{
-				tariff += rates[i] * (aTaxableIncome-markers[i]);
+				tariff += rates[i] * (aTaxableIncome-markers[i-1]);
 				return tariff;
 			}
 			else
 			{
-				tariff += rates[i] * markers[i];
+				tariff += rates[i] * (markers[i]-markers[i-1]);
 			}				
 		}
 

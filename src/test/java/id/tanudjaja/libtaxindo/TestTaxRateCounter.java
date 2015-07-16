@@ -73,4 +73,26 @@ public class TestTaxRateCounter
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
 		assertEquals((0.05 * 50000000) + (0.15 * 200000000), ctr.countTariff(250000000), 0.0);
 	}
+
+	@Test
+	public void testCountTariffFallsInTheThirdLayer()
+	{
+		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
+		assertEquals((0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 100000000), ctr.countTariff(350000000), 0.0);
+	}
+
+	@Test
+	public void testCountTariffEqualsWithTheThirdMarker()
+	{
+		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
+		assertEquals((0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 250000000), ctr.countTariff(500000000), 0.0);
+	}
+
+	@Test
+	public void testCountTariffFallsInTheForthLayer()
+	{
+		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
+		assertEquals((0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 250000000) + (0.30 * 100000000), ctr.countTariff(600000000), 0.0);
+	}
 };
+
