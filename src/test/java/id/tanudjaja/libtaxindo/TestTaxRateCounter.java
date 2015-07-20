@@ -43,7 +43,7 @@ public class TestTaxRateCounter
 	);
 
 	@Test
-	public void testCountTariff2FallsInTheFirstLayer()
+	public void testCalculate2FallsInTheFirstLayer()
 	{
 		double correctVal=0.05 * 1000000;
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES_2);
@@ -51,7 +51,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariff2EqualsWithTheFirstMarker()
+	public void testCalculate2EqualsWithTheFirstMarker()
 	{
 		double correctVal=0.05 * 50000000;
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES_2);
@@ -59,7 +59,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariff2FallsInTheSecondLayer()
+	public void testCalculate2FallsInTheSecondLayer()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 100000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES_2);
@@ -67,7 +67,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffWithLessThanZeroTaxableIncome()
+	public void testCalculateWithLessThanZeroTaxableIncome()
 	{
 		mExceptionRule.expect(IllegalArgumentException.class);
 		mExceptionRule.expectMessage(INVALID_TAXABLE_INCOME);
@@ -77,7 +77,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffWithZeroTaxableIncome()
+	public void testCalculateWithZeroTaxableIncome()
 	{
 		double correctVal=0;		
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -85,7 +85,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffFallsInTheFirstLayer()
+	public void testCalculateFallsInTheFirstLayer()
 	{
 		double correctVal=0.05 * 1000000;
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -93,7 +93,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffEqualsWithTheFirstMarker()
+	public void testCalculateEqualsWithTheFirstMarker()
 	{
 		double correctVal=0.05 * 50000000;
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -101,7 +101,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffFallsInTheSecondLayer()
+	public void testCalculateFallsInTheSecondLayer()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 150000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -109,7 +109,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffEqualsWithTheSecondMarker()
+	public void testCalculateEqualsWithTheSecondMarker()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 200000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -117,7 +117,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffFallsInTheThirdLayer()
+	public void testCalculateFallsInTheThirdLayer()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 100000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -125,7 +125,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffEqualsWithTheThirdMarker()
+	public void testCalculateEqualsWithTheThirdMarker()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 250000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);
@@ -133,7 +133,7 @@ public class TestTaxRateCounter
 	}
 
 	@Test
-	public void testCountTariffFallsInTheForthLayer()
+	public void testCalculateFallsInTheForthLayer()
 	{
 		double correctVal=(0.05 * 50000000) + (0.15 * 200000000) + (0.25 * 250000000) + (0.30 * 100000000);
 		TaxRateCounter ctr=new TaxRateCounter(TAX_RULES);

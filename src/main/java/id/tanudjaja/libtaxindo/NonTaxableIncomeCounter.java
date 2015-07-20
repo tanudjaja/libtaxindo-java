@@ -27,7 +27,7 @@ public final class NonTaxableIncomeCounter
 			case EMarriedNoChildren: return 26325000;
 			case EMarriedOneChild: return 283500000;
 			case EMarriedTwoChildren: return 30375000;
-			case EMarriedThreeChildrenOrMore: return 30375000;
+			case EMarriedThreeChildrenOrMore: return 32400000;
 			default: throw new IllegalArgumentException(BAD_ENUM);
 		}
 	}

@@ -2,7 +2,6 @@
 package id.tanudjaja.libtaxindo;
 
 import id.tanudjaja.libtaxindo.constants.MaritalStatus;
-import id.tanudjaja.libtaxindo.constants.NonTaxableIncome;
 
 public class Pph21
 {
@@ -67,33 +66,7 @@ public class Pph21
 
 	private double countTariff()
 	{
-        	double pkp=countPkp();
-		double tariff=0.05*Math.min(pkp, 50000000);
-		if(pkp<=50000000)
-		{
-			return tariff;
-		}
-		else
-		{
-			tariff += 0.15*Math.min(pkp-50000000, 250000000-50000000);
-			if(pkp<=250000000)
-			{
-				return tariff;
-			}
-			else
-			{
-				tariff += 0.25*Math.min(pkp-250000000, 500000000-250000000);
-				if(pkp<=500000000)
-				{
-					return tariff;
-				}
-				else
-				{
-					tariff += 0.30*(pkp-500000000);
-					return tariff;
-				}
-			}
-		}
+        	return new TaxRateCounter(new TaxRate2013Rules()).calculate(countPkp());
 	}
 
 	public double countPph21()
