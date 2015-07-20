@@ -1,7 +1,7 @@
 
 package id.tanudjaja.libtaxindo;
 
-import static id.tanudjaja.libtaxindo.constants.MaritalStatus.*;
+import id.tanudjaja.libtaxindo.constants.MaritalStatus;
 
 public final class NonTaxableIncomeCounter
 {
@@ -29,11 +29,11 @@ public final class NonTaxableIncomeCounter
 	{
 		switch(aMaritalStatus)
 		{
-			case EUnmarried: return 24300000;
-			case EMarriedNoChildren: return 26325000;
-			case EMarriedOneChild: return 283500000;
-			case EMarriedTwoChildren: return 30375000;
-			case EMarriedThreeChildrenOrMore: return 32400000;
+			case MaritalStatus.UNMARRIED: return 24300000;
+			case MaritalStatus.MARRIED_NO_CHILDREN: return 26325000;
+			case MaritalStatus.MARRIED_ONE_CHILD: return 283500000;
+			case MaritalStatus.MARRIED_TWO_CHILDREN: return 30375000;
+			case MaritalStatus.MARRIED_THREE_OR_MORE_CHILDREN: return 32400000;
 			default: throw new IllegalArgumentException(BAD_ENUM);
 		}
 	}

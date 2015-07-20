@@ -35,7 +35,7 @@ public class TestNonTaxableIncomeCounter
 	public void testCalculateUnmarriedSubject()
 	{
 		double correctVal=24300000;		
-		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(EUnmarried), 0.0);
+		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(UNMARRIED), 0.0);
 	}
 
 	@Test
@@ -49,7 +49,7 @@ public class TestNonTaxableIncomeCounter
 	public void testCalculateMarriedWithNoChildrenSubject()
 	{
 		double correctVal=26325000;		
-		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(EMarriedNoChildren), 0.0);
+		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(MARRIED_NO_CHILDREN), 0.0);
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class TestNonTaxableIncomeCounter
 	public void testCalculateMarriedWithOneChildSubject()
 	{
 		double correctVal=283500000;		
-		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(EMarriedOneChild), 0.0);
+		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(MARRIED_ONE_CHILD), 0.0);
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class TestNonTaxableIncomeCounter
 	public void testCalculateMarriedWithTwoChildrenSubject()
 	{
 		double correctVal=30375000;		
-		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(EMarriedTwoChildren), 0.0);
+		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(MARRIED_TWO_CHILDREN), 0.0);
 	}
 
 	@Test
@@ -91,7 +91,7 @@ public class TestNonTaxableIncomeCounter
 	public void testCalculateMarriedWithThreeChildrenOrMoreSubject()
 	{
 		double correctVal=32400000;		
-		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(EMarriedThreeChildrenOrMore), 0.0);
+		assertEquals(correctVal, NonTaxableIncomeCounter.calculate(MARRIED_THREE_OR_MORE_CHILDREN), 0.0);
 	}
 
 	@Test
