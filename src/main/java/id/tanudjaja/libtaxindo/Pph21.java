@@ -5,75 +5,66 @@ import id.tanudjaja.libtaxindo.constants.MaritalStatus;
 
 public class Pph21
 {
-	private final double mGajiPokok;
+	private final double mBasicSalary;
 	private final double mTkp;
 	private final double mBonusThr;
-	private final byte  mStatusWp;
+	private final byte  mMaritalStatus;
 	private final double mPension;
 
-	public Pph21(double aGajiPokok, double aTkp, double aBonusThr, byte aStatusWp, double aPension)
+	private final double mNonTaxableIncome;
+	private final double mJkk;
+	private final double mJkm;
+	private final double mJht;
+	private final double mBrutto;
+	private final double mPositionAllowance;
+	private final double mNetto;
+
+	public Pph21(double aBasicSalary, double aTkp, double aBonusThr, byte aMaritalStatus, double aPension)
 	{
-		mGajiPokok=aGajiPokok;
+		mBasicSalary=aBasicSalary;
 		mTkp=aTkp;
 		mBonusThr=aBonusThr;
-		mStatusWp=aStatusWp;
+		mMaritalStatus=aMaritalStatus;
 		mPension=aPension;
+
+		mNonTaxableIncome=NonTaxableIncomeCounter.calculate(mMaritalStatus);
+		mJkk=0.024 * mBasicSalary;
+		mJkm=0.03 * mBasicSalary;
+		mJht=0.02 * mBasicSalary;
+		mBrutto=mBasicSalary+mTkp+mBonusThr+mJkk+mJkm;
+		mPositionAllowance=Math.min(500000, 0.05*mBrutto);
+		mNetto=mBrutto-(mPositionAllowance+mJht+mPension);
 	}
 
-	public double getPtkp()
+	public double getBrutto()
 	{
-		return NonTaxableIncomeCounter.calculate(mStatusWp);
+		return mBrutto;
 	}
 
-	private double countJkk()
+	public double getNetto()
 	{
-		return 0.024 * mGajiPokok;
+		return mNetto;
 	}
 
-	private double countJkm()
+	private double calculateTaxableIncome()
 	{
-		return 0.03 * mGajiPokok;
+		double annualNetto=12.0*mNetto;
+
+		return Math.floor(annualNetto-mNonTaxableIncome);
 	}
 
-	private double countBruto()
+	private double calculateTaxTariff()
 	{
-		return mGajiPokok+mTkp+mBonusThr+countJkk()+countJkm();
+		double pkp=calculateTaxableIncome();
+
+        	return new TaxRateCounter(new TaxRate2013Rules()).calculate(pkp);
 	}
 
-	private double countBiayaJabatan()
+	public double calculate()
 	{
-		return Math.min(500000, 0.05*countBruto());
-	}
+		double annualTax=calculateTaxTariff() * calculateTaxableIncome();
 
-	private double countJht()
-	{
-		return 0.02 * mGajiPokok;
-	}
-
-	private double countNetto()
-	{
-		double temp1=countBiayaJabatan()+countJht()+mPension;
-
-		return countBruto()-temp1;
-	}
-
-	private double countPkp()
-	{
-		double temp2=12*countNetto();
-
-		return Math.floor(temp2-getPtkp());
-	}
-
-	private double countTariff()
-	{
-        	return new TaxRateCounter(new TaxRate2013Rules()).calculate(countPkp());
-	}
-
-	public double countPph21()
-	{
-		double temp3=countTariff() * countPkp();
-
-		return temp3 / 12.0;
+		return annualTax / 12.0;
 	}
 
 };
