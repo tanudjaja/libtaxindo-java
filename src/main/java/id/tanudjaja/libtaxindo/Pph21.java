@@ -21,17 +21,9 @@ public class Pph21
 		mPension=aPension;
 	}
 
-	public double getPtkp() throws IllegalArgumentException
+	public double getPtkp()
 	{
-		switch(mStatusWp)
-		{
-			case MaritalStatus.EUnmarried: return NonTaxableIncome.EUnmarried;
-			case MaritalStatus.EMarriedNoChildren: return NonTaxableIncome.EMarriedNoChildren;
-			case MaritalStatus.EMarriedOneChild: return NonTaxableIncome.EMarriedOneChild;
-			case MaritalStatus.EMarriedTwoChildren: return NonTaxableIncome.EMarriedTwoChildren;
-			case MaritalStatus.EMarriedThreeChildrenOrMore: return NonTaxableIncome.EMarriedThreeChildrenOrMore;
-			default: throw new IllegalArgumentException("Bad mStatusWp");
-		}
+		return NonTaxableIncomeCounter.calculate(mStatusWp);
 	}
 
 	private double countJkk()

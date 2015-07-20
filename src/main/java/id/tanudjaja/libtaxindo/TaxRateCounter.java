@@ -12,10 +12,11 @@ public class TaxRateCounter
 		mRules=aRules;
 	}
     
-	public double countTariff(double aTaxableIncome)
+	public double calculate(double aTaxableIncome)
 	{
 		int i, j;
 
+		// validate taxable income value
 		if(aTaxableIncome<0)
 		{
 			throw new IllegalArgumentException(INVALID_TAXABLE_INCOME);
@@ -30,6 +31,7 @@ public class TaxRateCounter
 
 		double tariff=0;
 
+		// check whether the income is less than first marker, if it is return immediately.
 		if(aTaxableIncome <= markers[0])
 		{
 			return rates[0] * aTaxableIncome;
@@ -39,6 +41,8 @@ public class TaxRateCounter
 			tariff += rates[0] * markers[0];
 		}
 
+		// calculate the tariff of each income layer separated by markers
+		// if one is found not exceeding certain layer's marker, return immediately
 		for(i=1; i<markers.length; i++)
 		{
 			if(aTaxableIncome <= markers[i])
@@ -52,6 +56,7 @@ public class TaxRateCounter
 			}				
 		}
 
+		// calculate the remaining taxable income
 		tariff += rates[rates.length-1] * (aTaxableIncome-markers[markers.length-1]);
 
 		return tariff;
