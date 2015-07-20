@@ -19,8 +19,7 @@ public class Pph21
 	private final double mPositionAllowance;
 	private final double mNetto;
 	private final double mTaxableIncome;
-	private final double mAnnualTaxTariff;
-	private final double mMonthlyTaxTariff;
+	private final double mTaxTariff;
 
 	public Pph21(double aBasicSalary, double aTkp, double aBonusThr, byte aMaritalStatus, double aPension)
 	{
@@ -40,8 +39,9 @@ public class Pph21
 
 		double annualNetto=12.0 * mNetto;
 		mTaxableIncome=Math.floor(annualNetto-mNonTaxableIncome);
-		mAnnualTaxTariff=new TaxRateCounter(new TaxRate2013Rules()).calculate(mTaxableIncome);
-		mMonthlyTaxTariff=mAnnualTaxTariff / 12.0;
+		
+		double annualTariff=new TaxRateCounter(new TaxRate2013Rules()).calculate(mTaxableIncome);
+		mTaxTariff=annualTariff / 12.0;
 	}
 
 	public double getBrutto()
@@ -59,14 +59,9 @@ public class Pph21
 		return mTaxableIncome;
 	}
 
-	public double getAnnualTax()
+	public double getTax()
 	{
-        	return mAnnualTaxTariff;
-	}
-
-	public double getMonthlyTax()
-	{
-		return mMonthlyTaxTariff;
+		return mTaxTariff;
 	}
 };
 

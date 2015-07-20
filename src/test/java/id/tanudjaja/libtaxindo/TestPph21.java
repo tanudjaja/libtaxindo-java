@@ -37,8 +37,7 @@ public class TestPph21
 	public void testGetTax()
 	{
 		Pph21 p=new Pph21(20000000, 500000, 10000000, UNMARRIED, 150000);
-		assertEquals(55515000, p.getAnnualTax(), 0.0);
-		assertEquals(4626250, p.getMonthlyTax(), 0.0);
+		assertEquals(4626250, p.getTax(), 0.0);
 	}
 };
 
