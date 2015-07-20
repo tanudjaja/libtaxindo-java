@@ -6,13 +6,19 @@ import static id.tanudjaja.libtaxindo.constants.MaritalStatus.*;
 public final class NonTaxableIncomeCounter
 {
 	public final static String BAD_ENUM="Bad enumeration";
+	public final static String NEGATIVE_NUM_OF_CHILD="Number of child is less than 0";
 
 	private NonTaxableIncomeCounter()
 	{
 	}
 
-	public static double calculate(boolean aMarried, short aNumberOfChild)
+	public static double calculate(boolean aMarried, int aNumberOfChild)
 	{
+		if(aNumberOfChild < 0)
+		{
+			throw new IllegalArgumentException(NEGATIVE_NUM_OF_CHILD);
+		}
+
 		byte flag=0;
 		flag |= (aMarried ? 1 : 0);
 		flag = (byte)( (flag << 4) | ((aNumberOfChild > 3 ? 3 : aNumberOfChild) & 0xf) );
