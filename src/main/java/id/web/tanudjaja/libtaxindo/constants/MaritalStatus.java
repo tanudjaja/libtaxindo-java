@@ -1,5 +1,5 @@
 
-package id.tanudjaja.libtaxindo.constants;
+package id.web.tanudjaja.libtaxindo.constants;
 
 public final class MaritalStatus
 {

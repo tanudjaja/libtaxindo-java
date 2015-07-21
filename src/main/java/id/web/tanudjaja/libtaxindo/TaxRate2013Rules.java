@@ -1,5 +1,5 @@
 
-package id.tanudjaja.libtaxindo;
+package id.web.tanudjaja.libtaxindo;
 
 public class TaxRate2013Rules extends TaxRateRules
 {

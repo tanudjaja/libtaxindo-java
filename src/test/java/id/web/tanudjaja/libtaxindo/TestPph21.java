@@ -1,11 +1,11 @@
-package id.tanudjaja.libtaxindo;
+package id.web.tanudjaja.libtaxindo;
 
 import static org.junit.Assert.*;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import static org.hamcrest.CoreMatchers.*;
 
-import static id.tanudjaja.libtaxindo.constants.MaritalStatus.*;
+import static id.web.tanudjaja.libtaxindo.constants.MaritalStatus.*;
 
 public class TestPph21
 {

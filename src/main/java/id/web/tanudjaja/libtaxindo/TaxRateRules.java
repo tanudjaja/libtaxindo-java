@@ -1,5 +1,5 @@
 
-package id.tanudjaja.libtaxindo;
+package id.web.tanudjaja.libtaxindo;
 
 import java.util.Arrays;
 import java.util.List;

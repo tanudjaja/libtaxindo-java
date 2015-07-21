@@ -1,7 +1,7 @@
 
-package id.tanudjaja.libtaxindo;
+package id.web.tanudjaja.libtaxindo;
 
-import id.tanudjaja.libtaxindo.constants.MaritalStatus;
+import id.web.tanudjaja.libtaxindo.constants.MaritalStatus;
 
 public class Pph21
 {

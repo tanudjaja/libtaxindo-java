@@ -3,7 +3,7 @@ apply plugin: 'java'
 
 archivesBaseName = 'libtaxindo-java'
 version = '0.0.1'
-group = 'id.tanudjaja'
+group = 'id.web.tanudjaja'
 
 repositories
 {

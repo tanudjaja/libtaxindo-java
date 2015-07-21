@@ -1,11 +1,11 @@
-package id.tanudjaja.libtaxindo;
+package id.web.tanudjaja.libtaxindo;
 
 import static org.junit.Assert.*;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import static org.hamcrest.CoreMatchers.*;
 
-import static id.tanudjaja.libtaxindo.TaxRateCounter.*;
+import static id.web.tanudjaja.libtaxindo.TaxRateCounter.*;
 
 public class TestTaxRateCounter
 {
