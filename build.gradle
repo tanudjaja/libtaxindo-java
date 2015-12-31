@@ -1,13 +1,15 @@
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 archivesBaseName = 'libtaxindo-java'
-version = '0.0.1'
-group = 'id.web.tanudjaja'
+version = '0.1.0'
+group = 'id.web.tanudjaja.android'
 
 repositories
 {
 	mavenCentral()
+	mavenLocal()
 	flatDir { dirs 'libs' }
 }
 
